@@ -23,15 +23,15 @@ import math
 import numpy as np
 import scipy.linalg as npalg
 import scipy.stats as stats
-import FITC_network
-from EQ_kernel import *
+from . import FITC_network
+from .EQ_kernel import *
 import copy
 import matplotlib.pyplot as plt
 import time
 import pprint as pp
 import multiprocessing as mp
 import os
-from tools import *
+from .tools import *
 
 
 class AEPDGP:

@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import math
 import scipy.stats as stats
 
-import AEPDGP
+from . import AEPDGP
 
 
 class AEPDGP_net:

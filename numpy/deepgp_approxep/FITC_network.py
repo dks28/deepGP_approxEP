@@ -1,11 +1,11 @@
 import sys, os
 import numpy as np
-from EQ_kernel import *
+from .EQ_kernel import *
 import scipy.linalg as spalg
 import scipy as scipy
 import pprint as pp
 import time
-from tools import *
+from .tools import *
 
 from scipy.cluster.vq import vq, kmeans2
 
