@@ -7,7 +7,7 @@ import AEPDGP_net
 import matplotlib.pyplot as plt
 import time
 
-print 'Theano version: ' + theano.__version__ + ', base compile dir: ' + theano.config.base_compiledir
+#print 'Theano version: ' + theano.__version__ + ', base compile dir: ' + theano.config.base_compiledir
 # theano.config.compute_test_value = 'warn'
 theano.config.optimizer = 'None'
 # theano.exception_verbosity = 'high'
@@ -52,19 +52,19 @@ test_nll, test_rms, energy = net.train(no_iterations=no_iterations,
                                no_points_per_mb=no_points_per_mb,
                                lrate=0.02)
 t1 = time.time()
-print 'time: ', t1 - t0
+print('time: ', t1 - t0)
 
 # We make predictions for the test set
 m, v = net.predict(X_test)
 
 # We compute the test RMSE
 rmse = np.sqrt(np.mean((y_test - m)**2))
-print 'test rmse: ', rmse
+print('test rmse: ', rmse)
 
 # We compute the test log-likelihood
 test_ll = np.mean(-0.5 * np.log(2 * math.pi * (v)) - \
     0.5 * (y_test - m)**2 / (v))
-print 'test log-likelihood: ', test_ll
+print('test log-likelihood: ', test_ll)
 
 m, v = net.predict(X_plot)
 plt.figure()

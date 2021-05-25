@@ -750,7 +750,7 @@ class FITC_network:
         eta1_R0 = []
         eta20 = []
         for d in range(Dout1):
-            eta1_R0.append(np.random.randn(M1*(M1+1)/2, ))
+            eta1_R0.append(np.random.randn(M1*(M1+1)//2, ))
             eta20.append(np.random.randn(M1, ))
         params['eta1_R'].append(eta1_R0)
         params['eta2'].append(eta20)
@@ -786,7 +786,7 @@ class FITC_network:
             eta1_Ri = []
             eta2i = []
             for d in range(Douti):
-                eta1_Ri.append(np.random.randn(Mi*(Mi+1)/2, ) / 10)
+                eta1_Ri.append(np.random.randn(Mi*(Mi+1)//2, ) / 10)
                 eta2i.append(np.random.randn(Mi, ) / 10)
             params['eta1_R'].append(eta1_Ri)
             params['eta2'].append(eta2i)
@@ -828,7 +828,7 @@ class FITC_network:
         eta1_R0 = []
         eta20 = []
         for d in range(Dout1):
-            eta1_R0.append(np.random.randn(M1*(M1+1)/2, ))
+            eta1_R0.append(np.random.randn(M1*(M1+1)//2, ))
             eta20.append(np.random.randn(M1, ))
         params['eta1_R'].append(eta1_R0)
         params['eta2'].append(eta20)
@@ -868,7 +868,7 @@ class FITC_network:
             eta1_Ri = []
             eta2i = []
             for d in range(Douti):
-                eta1_Ri.append(np.random.randn(Mi*(Mi+1)/2, ) / 10)
+                eta1_Ri.append(np.random.randn(Mi*(Mi+1)//2, ) / 10)
                 eta2i.append(np.random.randn(Mi, ) / 10)
             params['eta1_R'].append(eta1_Ri)
             params['eta2'].append(eta2i)
@@ -915,7 +915,7 @@ class FITC_network:
         eta1_R0 = []
         eta20 = []
         for d in range(Dout1):
-            eta1_R0.append(np.random.randn(M1*(M1+1)/2, ))
+            eta1_R0.append(np.random.randn(M1*(M1+1)//2, ))
             eta20.append(np.random.randn(M1, ))
         params['eta1_R'].append(eta1_R0)
         params['eta2'].append(eta20)
@@ -955,7 +955,7 @@ class FITC_network:
             eta1_Ri = []
             eta2i = []
             for d in range(Douti):
-                eta1_Ri.append(np.random.randn(Mi*(Mi+1)/2, ) / 10)
+                eta1_Ri.append(np.random.randn(Mi*(Mi+1)//2, ) / 10)
                 eta2i.append(np.random.randn(Mi, ) / 10)
             params['eta1_R'].append(eta1_Ri)
             params['eta2'].append(eta2i)

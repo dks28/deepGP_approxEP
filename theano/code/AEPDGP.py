@@ -273,17 +273,17 @@ class AEPDGP:
                     my, vy = self.predict(X_test)
                     test_nlli = mll(y_test, my, vy, median=False)
                     test_rmsi = rmse(y_test, my, median=False)
-                    print "training iter: %d, logZ: %.5f, test mnll: %.5f, test srms: %.5f" % (ind, energy, test_nlli, test_rmsi)
+                    print("training iter: %d, logZ: %.5f, test mnll: %.5f, test srms: %.5f" % (ind, energy, test_nlli, test_rmsi))
                     test_nll.append(test_nlli)
                     test_rms.append(test_rmsi)
                     train_ll.append(energy)
                 elif ind % print_every == 0:
                     train_ll.append(energy)
-                    print "training iter: %d, logZ: %.5f" % (ind, energy)
+                    print("training iter: %d, logZ: %.5f" % (ind, energy))
 
                 ind += 1
         except KeyboardInterrupt:
-            print "Keyboard interrupt exception"
+            print("Keyboard interrupt exception")
 
         return test_nll, test_rms, train_ll
 

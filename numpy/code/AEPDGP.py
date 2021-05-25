@@ -136,22 +136,22 @@ class AEPDGP:
         # update network with new hypers
         network.update_hypers(params)
         t1 = time.time()
-        if toprint: print "update hypers: %f seconds" % (t1-t0)
+        if toprint: print("update hypers: %f seconds" % (t1-t0))
         t0 = time.time()
         # update Kuu given new hypers
         network.compute_kuu()
         t1 = time.time()
-        if toprint: print "compute kuu: %f seconds" % (t1-t0)
+        if toprint: print("compute kuu: %f seconds" % (t1-t0))
         t0 = time.time()
         # compute mu and Su for each layer
         network.update_posterior()
         t1 = time.time()
-        if toprint: print "update posterior: %f seconds" % (t1-t0)
+        if toprint: print("update posterior: %f seconds" % (t1-t0))
         t0 = time.time()
         # compute muhat and Suhat for each layer
         network.compute_cavity()
         t1 = time.time()
-        if toprint: print "compute cavity: %f seconds" % (t1-t0)
+        if toprint: print( "compute cavity: %f seconds" % (t1-t0))
 
         t0 = time.time()
         # reset gradient placeholders
@@ -175,7 +175,7 @@ class AEPDGP:
             else:
                 grad_all['zu'][i] = [np.zeros([M, Din]) for d in range(Dout)]
 
-            grad_all['eta1_R'][i] = [np.zeros([M*(M+1)/2, ]) for d in range(Dout)]
+            grad_all['eta1_R'][i] = [np.zeros([M*(M+1)//2, ]) for d in range(Dout)]
             grad_all['eta2'][i] = [np.zeros([M, ]) for d in range(Dout)]
 
         grad_logZ = {}
@@ -195,7 +195,7 @@ class AEPDGP:
             grad_logZ['Ahat'][i] = [np.zeros([M, ]) for d in range(Dout)]
         
         t1 = time.time()
-        if toprint: print "prep: %f seconds" % (t1-t0)
+        if toprint: print( "prep: %f seconds" % (t1-t0))
 
         epsilon = None
         if self.lik == 'Softmax':
@@ -210,7 +210,7 @@ class AEPDGP:
             gradZi_vec.append(grad_i)
 
         t1 = time.time()
-        if toprint: print "sequential minibatch: %f seconds" % (t1-t0)
+        if toprint: print("sequential minibatch: %f seconds" % (t1-t0))
         t0 = time.time()
         # collect output
         logZi = 0
@@ -226,7 +226,7 @@ class AEPDGP:
                         # print name, i, d
                         grad_logZ[name][i][d] += grad_n[name][i][d]
         t1 = time.time()
-        if toprint: print "collecting output: %f seconds" % (t1-t0)
+        if toprint: print("collecting output: %f seconds" % (t1-t0))
         t0 = time.time()
         for i in range(no_layers):
             Mi = network.no_pseudos[i]
@@ -317,7 +317,7 @@ class AEPDGP:
                 grad_all['zu'][i] += dhyp[2]
 
         t1 = time.time()
-        if toprint: print "merge grads: %f seconds" % (t1-t0)
+        if toprint: print("merge grads: %f seconds" % (t1-t0))
         if compute_logZ:
 
             t0 = time.time()
@@ -332,7 +332,7 @@ class AEPDGP:
             # print 'cav: ', scale_cav * phi_cavity
             # print 'logZ:', scale_logZ * logZi
             t1 = time.time()
-            if toprint: print "compute energy: %f seconds" % (t1-t0)
+            if toprint: print("compute energy: %f seconds" % (t1-t0))
         else:
             energy = 0
 
@@ -387,7 +387,7 @@ class AEPDGP:
 
                     test_nlli = compute_test_nll(y_test, my, vy, self.lik, median=False)
                     test_rmsi = compute_test_error(y_test, my, self.lik, median=False)
-                    print "\t logZ: %.5f, test mnll: %.5f, test rms: %.5f" % (energy, test_nlli, test_rmsi)
+                    print("\t logZ: %.5f, test mnll: %.5f, test rms: %.5f" % (energy, test_nlli, test_rmsi))
                     test_nll.append(test_nlli)
                     test_rms.append(test_rmsi)
                     train_ll.append(energy)
@@ -399,7 +399,7 @@ class AEPDGP:
                     # print "\t logZ: %.5f" % (energy),
 
         except KeyboardInterrupt:
-            print 'Caught KeyboardInterrupt ...'
+            print('Caught KeyboardInterrupt ...')
 
         return test_nll, test_rms, train_ll
 
@@ -430,7 +430,7 @@ class AEPDGP:
                 v_zui = np.zeros((Mi, Dini))
             else:
                 v_zui = [np.zeros((Mi, Dini)) for d in range(Douti)]
-            v_eta1_Ri = [np.zeros((Mi * (Mi+1) / 2, )) for d in range(Douti)]
+            v_eta1_Ri = [np.zeros((Mi * (Mi+1) // 2, )) for d in range(Douti)]
             v_eta2i = [np.zeros((Mi, )) for d in range(Douti)]
             v_eta1_R.append(v_eta1_Ri)
             v_eta2.append(v_eta2i)

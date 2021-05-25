@@ -250,7 +250,7 @@ def is_positive_definite(x):
         print(e)
         return False
     except:
-        print "Unexpected error:", sys.exc_info()[0]
+        print("Unexpected error:", sys.exc_info()[0])
         raise
 
 def is_any_nan(x):
